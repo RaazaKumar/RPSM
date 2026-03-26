@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
@@ -57,16 +57,21 @@ const TabNavigation = () => {
             bottom: 10,
             left: 10,
             right: 10,
-            elevation: 5,
             backgroundColor: '#fff',
             borderRadius: 12,
             height: 64,
-            ...styles.shadow,
           },
 
           tabBarItemStyle: {
             paddingVertical: 8,
           },
+          tabBarButton: props => (
+            <Pressable
+              {...props}
+              android_ripple={{ color: 'transparent' }}
+              style={props.style}
+            />
+          ),
         })}
       >
         <Tab.Screen name="Home" component={HomeScreen} />
@@ -95,12 +100,5 @@ const styles = StyleSheet.create({
     color: '#111827',
     fontSize: 16,
     fontWeight: '700',
-  },
-  shadow: {
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 5 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 5,
   },
 });

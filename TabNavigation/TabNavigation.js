@@ -22,7 +22,7 @@ const TabNavigation = () => {
           animation: 'shift',
           tabBarHideOnKeyboard: true,
 
-          // GIF style: active pill with label, inactive icon only
+          // Professional style: active capsule with label
           tabBarIcon: ({ focused, color }) => {
             let iconName;
 
@@ -37,18 +37,18 @@ const TabNavigation = () => {
             if (focused) {
               return (
                 <View style={styles.activePill}>
-                  <Icon name={iconName} size={22} color="#111827" />
+                  <Icon name={iconName} size={20} color="#0F172A" />
                   <Text style={styles.activeLabel}>{route.name}</Text>
                 </View>
               );
             }
 
-            return <Icon name={iconName} size={24} color={color} />;
+            return <Icon name={iconName} size={22} color={color} />;
           },
 
           // 🎨 Colors
-          tabBarActiveTintColor: '#111827',
-          tabBarInactiveTintColor: '#6B7280',
+          tabBarActiveTintColor: '#0F172A',
+          tabBarInactiveTintColor: '#64748B',
           tabBarShowLabel: false,
 
           // 💅 Styling
@@ -57,13 +57,17 @@ const TabNavigation = () => {
             bottom: 10,
             left: 10,
             right: 10,
-            backgroundColor: '#fff',
-            borderRadius: 12,
-            height: 64,
+            backgroundColor: '#F8FAFC',
+            borderRadius: 16,
+            height: 68,
+            borderWidth: 1,
+            borderColor: '#E2E8F0',
+            paddingHorizontal: 6,
+            paddingTop: 4,
           },
 
           tabBarItemStyle: {
-            paddingVertical: 8,
+            paddingVertical: 7,
           },
           tabBarButton: props => (
             <Pressable
@@ -86,19 +90,19 @@ export default TabNavigation;
 
 const styles = StyleSheet.create({
   activePill: {
-    minWidth: 120,
-    height: 42,
-    borderRadius: 21,
-    paddingHorizontal: 14,
+    minWidth: 112,
+    height: 40,
+    borderRadius: 14,
+    paddingHorizontal: 12,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#E5E7EB',
-    gap: 8,
+    backgroundColor: '#E2E8F0',
+    gap: 6,
   },
   activeLabel: {
-    color: '#111827',
-    fontSize: 16,
-    fontWeight: '700',
+    color: '#0F172A',
+    fontSize: 14,
+    fontWeight: '600',
   },
 });

@@ -19,7 +19,7 @@ const TabNavigation = () => {
       <Tab.Navigator
         screenOptions={({ route }) => ({
           headerShown: false,
-          animation: 'shift',
+          animation: 'fade',
           tabBarHideOnKeyboard: true,
 
           // Professional style: active capsule with label
@@ -47,33 +47,36 @@ const TabNavigation = () => {
           },
 
           // 🎨 Colors
-          tabBarActiveTintColor: '#0F172A',
-          tabBarInactiveTintColor: '#64748B',
+          tabBarActiveTintColor: '#0B1220',
+          tabBarInactiveTintColor: '#667085',
           tabBarShowLabel: false,
 
           // 💅 Styling
           tabBarStyle: {
             position: 'absolute',
-            bottom: 10,
-            left: 10,
-            right: 10,
+            bottom: 14,
+            left: 12,
+            right: 12,
             backgroundColor: '#F8FAFC',
-            borderRadius: 16,
-            height: 68,
+            borderRadius: 18,
+            height: 70,
             borderWidth: 1,
-            borderColor: '#E2E8F0',
-            paddingHorizontal: 6,
-            paddingTop: 4,
+            borderColor: '#E4E7EC',
+            paddingHorizontal: 8,
+            paddingTop: 6,
           },
 
           tabBarItemStyle: {
-            paddingVertical: 7,
+            paddingVertical: 6,
           },
           tabBarButton: props => (
             <Pressable
               {...props}
               android_ripple={{ color: 'transparent' }}
-              style={props.style}
+              style={({ pressed }) => [
+                props.style,
+                pressed && styles.pressedTabButton,
+              ]}
             />
           ),
         })}
@@ -90,19 +93,25 @@ export default TabNavigation;
 
 const styles = StyleSheet.create({
   activePill: {
-    minWidth: 112,
-    height: 40,
-    borderRadius: 14,
-    paddingHorizontal: 12,
+    minWidth: 116,
+    height: 42,
+    borderRadius: 16,
+    paddingHorizontal: 13,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#E2E8F0',
-    gap: 6,
+    backgroundColor: '#E9EEF5',
+    borderWidth: 1,
+    borderColor: '#D8DFEA',
+    gap: 7,
   },
   activeLabel: {
-    color: '#0F172A',
-    fontSize: 14,
+    color: '#0B1220',
+    fontSize: 13,
     fontWeight: '600',
+  },
+  pressedTabButton: {
+    opacity: 0.85,
+    transform: [{ scale: 0.98 }],
   },
 });

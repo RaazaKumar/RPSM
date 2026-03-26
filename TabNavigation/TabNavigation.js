@@ -1,7 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
 
 // Icons
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -9,20 +8,19 @@ import Icon from 'react-native-vector-icons/Ionicons';
 // Screens
 import HomeScreen from '../Pages/HomeScreen';
 import ProfileScreen from '../Pages/ProfileScreen';
-import SettingsScreen from '../Pages/SettingsScreen';
+import TransactionScreen from '../Pages/TransactionScreen';
+import HistoryScreen from '../Pages/HistoryScreen'
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
   return (
-    <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           headerShown: false,
           animation: 'fade',
           tabBarHideOnKeyboard: true,
 
-          // Professional style: active capsule with label
           tabBarIcon: ({ focused, color }) => {
             let iconName;
 
@@ -30,8 +28,11 @@ const TabNavigation = () => {
               iconName = focused ? 'home' : 'home-outline';
             } else if (route.name === 'Profile') {
               iconName = focused ? 'person' : 'person-outline';
-            } else if (route.name === 'Settings') {
-              iconName = focused ? 'settings' : 'settings-outline';
+            } else if (route.name === 'Transaction') {
+              iconName = focused ? 'card' : 'card-outline';
+            }
+             else if (route.name === 'History') {
+              iconName = focused ?'time' : 'time-outline';
             }
 
             if (focused) {
@@ -82,10 +83,10 @@ const TabNavigation = () => {
         })}
       >
         <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Transaction" component={TransactionScreen} />
+        <Tab.Screen name="History" component={HistoryScreen} />
         <Tab.Screen name="Profile" component={ProfileScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>
-    </NavigationContainer>
   );
 };
 
